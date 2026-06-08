@@ -1,0 +1,21 @@
+{
+  "tests": [
+    {
+      "name": "Get feed",
+      "method": "GET",
+      "path": "/?action=feed",
+      "expectedStatus": 200,
+      "expectedBody": {"posts": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Create post no auth",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "create", "text": "Тестовый пост"},
+      "expectedStatus": 401,
+      "expectedBody": {"error": "string"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}

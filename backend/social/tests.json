@@ -1,0 +1,29 @@
+{
+  "tests": [
+    {
+      "name": "Get communities",
+      "method": "GET",
+      "path": "/?action=communities",
+      "expectedStatus": 200,
+      "expectedBody": {"communities": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Search users empty",
+      "method": "GET",
+      "path": "/?action=users_search&q=",
+      "expectedStatus": 200,
+      "expectedBody": {"users": []},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Get notifications no auth",
+      "method": "POST",
+      "path": "/",
+      "body": {"action": "notifications"},
+      "expectedStatus": 401,
+      "expectedBody": {"error": "string"},
+      "bodyMatcher": "partial"
+    }
+  ]
+}
